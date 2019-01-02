@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Pub Marker</title>
+  <script src='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.0.1/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    .map { position:absolute; padding-right:5px; z-index:1; padding-left:5px; top:0; bottom:0; width:100%; }
+    .hd
+    {
+    	font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+  </style>
+</head>
+<body>
+<div id='map-tooltips-js' class='map'> </div>
+<script>
+L.mapbox.accessToken = 'pk.eyJ1Ijoia2lyYW5raXRlOTYiLCJhIjoiY2lxNHNuemptMDAwZ2ZrbTZvNm1pMWhiNCJ9.lfZexuV8egklhZsbWAsl-g';
+var mapTooltipsJS = L.mapbox.map('map-tooltips-js', 'mapbox.dark')
+  .setView([13.0092, 77.5913], 11.5);
+var myLayer = L.mapbox.featureLayer().addTo(mapTooltipsJS);
+
+var geojson = [
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.4859945, 13.0126016]
+    },
+    properties: {
+      title: 'High Ultra Lounge',
+      description: 'Slick modern venue with far-reaching views over the city, a full bar and a varied, pan-Asian menu',
+      rating: '4.3',
+      url: 'http://www.highultralounge.com/',
+      icon: {
+        iconUrl: 'https://s-media-cache-ak0.pinimg.com/avatars/highultralounge_1390805635_280.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+ {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5705164, 12.979242]
+    },
+    properties: {
+      title: 'Toit Brewpub',
+      description: 'Brick-walled microbrewery offering naturally-crafted beers, hearty pub grub and brewery tours.',
+      rating: '4.5',
+      url: 'http://toit.in/',
+      icon: {
+        iconUrl: 'http://3.bp.blogspot.com/-WA36Q9DrTOI/Traa19NbhQI/AAAAAAAABug/c0aQDzA7HR8/s1600/toitlogo.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }	 
+  ,
+ {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.4869868, 13.0077889]
+    },
+    properties: {
+      title: '1522 The PUB',
+      description: 'Brick-walled, basement style rock music venue, pub and restaurant serving international nibbles.',
+      rating: '4.2',
+      url: 'http://www.bytplus.com/bangalore/1522-the-pub-malleswaram-5630',
+      icon: {
+        iconUrl: 'http://www.indivibe.com/venues/1438921467_3146/medium/3146.png',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }	 
+   ,
+ {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5240135, 13.0934996]
+    },
+    properties: {
+      title: 'Dennys Pub',
+      description: 'Freshly started',
+      rating: '4.0',
+      url: 'http://www.dennyspub.in/',
+      icon: {
+        iconUrl: 'http://www.bbarandgrill.com/img/train-d.svg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }	 
+  ,
+ {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5451938, 12.9946058]
+    },
+    properties: {
+      title: 'Sherlock\'s Pub',
+      description: 'Great Place',
+      rating: '3.9',
+      url: 'http://sherlocks.in/',
+      icon: {
+        iconUrl: 'http://www.enjoythessaloniki.com/wp-content/uploads/2014/10/Sherlock-logo.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5275025, 12.9711736]
+    },
+    properties: {
+      title: 'Bootlegger',
+      description: 'Great Place',
+      rating: '4.0',
+      url: 'http://bootlegger.co.in/',
+      icon: {
+        iconUrl: 'http://assets.limetray.com/assets/user_images/logos/original/Logo000_1453095329.png',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+   {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5368434, 12.9750784]
+    },
+    properties: {
+      title: 'Wyt Restaurant Pub',
+      description: 'Great Place',
+      rating: '3.8',
+      url: 'https://www.zomato.com/bangalore/wyt-restropub-mg-road',
+      icon: {
+        iconUrl: 'https://weeblr.com/media/weeblr/img/logos/weeblr-logo-only-w1994-h1000-with-border.png',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.571031, 12.9697966]
+    },
+    properties: {
+      title: 'The Black Rabbit',
+      description: 'Design-conscious dining room with a funky atmosphere for a range of international dishes',
+      rating: '4.1',
+      url: 'https://bars-pubs.liveinstyle.com/the-black-rabbit-indiranagar-bangalore/6437713017569280',
+      icon: {
+        iconUrl: 'https://em.wattpad.com/2b79ddfd7207aff1eb03016bc8e8826b52b1aeab/687474703a2f2f63646e2e6d79736974656d797761792e636f6d2f6574632d6d79736974656d797761792f69636f6e732f6c65676163792d70726576696577732f69636f6e732f676c6f77696e672d677265656e2d6e656f6e2d69636f6e732d616c7068616e756d657269632f3131303637372d676c6f77696e672d677265656e2d6e656f6e2d69636f6e2d616c7068616e756d657269632d6c65747465722d62622e706e67?s=fit&h=360&w=360&q=80',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }	
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5450421, 12.9331475]
+    },
+    properties: {
+      title: 'Gilly’s Resto-Bar',
+      description: 'This happening bar serves Continental and Indian food while presenting live music and comedy nights.',
+      rating: '4.1',
+      url: 'https://bars-pubs.liveinstyle.com/gilly-s-resto-bar-koramangala-bangalore/4988660912226304',
+      icon: {
+        iconUrl: 'https://images.eventshigh.com/venues/74f4fbc7c00a42a32d0799d136f6046a/v__original.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5460476, 12.9344977]
+    },
+    properties: {
+      title: 'The Boozy Griffin',
+      description: 'Great Place',
+      rating: '4.2',
+      url: 'https://www.zomato.com/bangalore/the-boozy-griffin-koramangala-5th-block',
+      icon: {
+        iconUrl: 'https://pbs.twimg.com/profile_images/687174548022628352/0_nsg4xY.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5159438, 13.0583149]
+    },
+    properties: {
+      title: 'Lock N\' Load Pub',
+      description: 'Quirky, Texas-themed hangout with a dance floor, DJ and full bar at Chairman\'s Club and Resort.',
+      rating: '3.5',
+      url: 'http://www.chairmansresort.com/pub.php',
+      icon: {
+        iconUrl: 'https://www.residentadvisor.net/images/promoter/uk-locknloadevents-logo.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5710612, 12.969561]
+    },
+    properties: {
+      title: 'Vapour Pub and Brewery',
+      description: 'This glamour-filled nightspot features a terrace with a DJ booth, a lounge and a global restaurant.',
+      rating: '4.1',
+      url: 'http://vapour.in/',
+      icon: {
+        iconUrl: 'http://3382_vapourkebabroom.limetray.com/assets/user_images/logos/original/Logo+1463146773.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5710612, 12.969561]
+    },
+    properties: {
+      title: 'Arbor Brewing',
+      description: 'Great Place',
+      rating: '4.4',
+      url: 'http://www.arborbrewing.in/home',
+      icon: {
+        iconUrl: 'https://lh3.ggpht.com/ADy3f6__kEmUfi0QVnzFYN3bAYvGOoMtfN86xe8FFt3CcFpdz-A0s8kPMJlov_sKJenNm4qkqmuHAK8ez8k7ifU3aS6ANQ=s750',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.4847019, 13.012469]
+    },
+    properties: {
+      title: 'District 6',
+      description: 'German dishes and grill dishes washed down with bespoke beers at a European-style microbrewery.',
+      rating: '4.3',
+      url: 'http://www.thedistrict6.com/',
+      icon: {
+        iconUrl: 'https://examplewordpresscom36153.files.wordpress.com/2016/05/sdfsdfds.jpg?w=545&h=562',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5913005, 12.9928366]
+    },
+    properties: {
+      title: '3 Monkeys Brewpub',
+      description: 'Funky brewpub with a dance floor offering an international menu and designer beers and ciders.',
+      rating: '4.1',
+      url: 'http://3monkeys.co.in/menu/',
+      icon: {
+        iconUrl: 'http://3monkeys.co.in/wp-content/uploads/2016/09/3monkeylogo.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5729729, 13.0205517]
+    },
+    properties: {
+      title: 'Rewind',
+      description: 'Great Place',
+      rating: '4.0',
+      url: 'http://www.liveinstyle.com/nightlife/Bangalore/outlet/Rewind-Banaswadi',
+      icon: {
+        iconUrl: 'http://www.liveinstyle.com/sites/default/files/logo_32.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+    {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.5715517, 13.0211939]
+    },
+    properties: {
+      title: 'The Local',
+      description: 'Great Place',
+      rating: '4.2',
+      url: 'http://www.thelocalblr.com/',
+      icon: {
+        iconUrl: 'http://www.towntrendz.com/uploads/restaurant_photos/6487/thumbnails/bd7b8bec1dfc5b88c0ef6b044137f9b7_thumb.jpg',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+  ,
+  {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [77.6052236, 12.9262019]
+    },
+    properties: {
+      title: 'Binge',
+      description: 'Great Place',
+      rating: '2.3',
+      url: 'http://www.thelocalblr.com/',
+      icon: {
+        iconUrl: 'http://bookspan.com/images/b-light-dark.png',
+        iconSize: [50, 50], // size of the icon
+        iconAnchor: [25, 25], // point of the icon which will correspond to marker's location
+        popupAnchor: [0, -25], // point from which the popup should open relative to the iconAnchor
+        className: 'dot'
+      }
+    }
+  }
+];
+
+// Set a custom icon on each marker based on feature properties.
+myLayer.on('layeradd', function(e) {
+  var marker = e.layer,
+    feature = marker.feature;
+  marker.setIcon(L.icon(feature.properties.icon));
+  var content = '<h1 style="color:#f44336; font-size:20px;">' + feature.properties.title + '</h1><p>' + feature.properties.description + '</p><p><strong>Rating</strong>:&nbsp' + feature.properties.rating + '</p><p><a href="' + feature.properties.url + '" target="_blank">Take me to site</a></p>';
+  marker.bindPopup(content);
+});
+myLayer.setGeoJSON(geojson);
+</script>
+<h1 class="hd" style="color:white; z-index:2;position:absolute; right:50px; top:500px; 
+text-shadow: 2px 2px grey;
+">Bangalore Pub Markers</h1>
+<h3 class="hd" style="color:white; z-index:2;position:absolute; right:50px; top:550px; 
+text-shadow: 2px 2px grey;
+">Click on any Pub marker to find out more</h3>
+</body>
+</html>
+
