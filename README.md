@@ -1,10 +1,11 @@
 # Pubs in Bangalore
 
-Designed using HTML platform with CSS and js libraries from MapBoxGL
+Git Page hosting the project https://atcodedog05.github.io/MapboxGL-JS-Pubs-in-Bangalore/
 
 ### Methods
 
-Using MapboxGL-JS. Tooltips are created using L.mapbox.map('map-tooltips-js', '\<your theme>');
+Designed using HTML platform with CSS and js libraries from MapBoxGL.
+Tooltips are created using L.mapbox.map('map-tooltips-js', '\<your theme>');
 
 ### About the project
 
